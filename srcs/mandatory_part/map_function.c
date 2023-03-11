@@ -9,7 +9,7 @@ void	map_create(t_data *data, char *path)
 	fd = open(path, O_RDONLY);
 	if(fd < 0)
 		error_print("MAP ERROR = UNKNOWN");
-	data->map = calloc(sizeof(char *), data->y_map + 1);
+	data->map = ft_calloc(sizeof(char *), data->y_map + 1);
 	while(data->y_map > i)
 	{
 		data->map[i] = get_next_line(fd);
@@ -18,6 +18,21 @@ void	map_create(t_data *data, char *path)
 	close(fd);
 }
 
+void	temp_map_create(t_data *data, char *path)
+{
+	int		fd;
+	int		i;
+
+	i = 0;
+	fd = open(path, O_RDONLY);
+	data->temp_map = ft_calloc(sizeof(char *), data->y_map + 1);
+	while (i < data->y_map)
+	{
+		data->temp_map[i] = get_next_line(fd);
+		i++;
+	}
+	close(fd);
+}
 
 void	map_size(t_data *data, char *path)
 {
@@ -61,13 +76,10 @@ int	map_size_control(t_data *data)
 
 void	check_map(t_data *data)
 {
-	t_value *value;
-
-	value = ft_calloc(sizeof (t_data), 1);
-	value->value = "ECP";
+	data->value.value = "ECP";
 	if (map_size_control(data) == 0)
 		error_print("MAP ERROR = SIZE");
-	if (map_value_control(data, value) == 0)
+	if (map_value_control(data) == 0)
 		error_print("MAP ERROR = VALUE");
 	if (map_ber_control(data) == 0)
 		error_print("MAP ERROR = UNKNOWN");
@@ -80,24 +92,48 @@ void	check_map(t_data *data)
 		error_print("MAP ERROR = VALUE LEFT");
 }
 
+void find_player_x_y(t_data *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(data->temp_map[i])
+	{
+		while(data->temp_map[i][j] != '\0')
+		{
+			if(data->temp_map[i][j] == 'P')
+			{
+				data->x_player = j;
+				data->y_player = i;
+				return;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
 int	map_value_left_control(t_data *data, int x, int y)
 {
 	int d;
 
 	d = 0;
-	data->path_map[y][x] = '.';
-	if(data->path_map[y][x - 1] != '1' && data->path_map[y][x - 1] != '.')
+	data->temp_map[y][x] = '.';
+	if(data->temp_map[y][x - 1] != '1' && data->temp_map[y][x - 1] != '.')
 		map_value_left_control(data, x - 1, y);
-	if(data->path_map[y + 1][x] != '1' && data->path_map[y + 1][x] != '.')
+	if(data->temp_map[y + 1][x] != '1' && data->temp_map[y + 1][x] != '.')
 		map_value_left_control(data, x, y + 1);
-	if(data->path_map[y - 1][x] != '1' && data->path_map[y - 1][x] != '.')
+	if(data->temp_map[y - 1][x] != '1' && data->temp_map[y - 1][x] != '.')
 		map_value_left_control(data, x, y - 1);
-	if(data->path_map[y][x + 1] != '1' && data->path_map[y][x + 1] != '.')
+	if(data->temp_map[y][x + 1] != '1' && data->temp_map[y][x + 1] != '.')
 		map_value_left_control(data, x + 1, y);
 	else
 	{
-		data->path_map[y][x] = '.';
-		d = map_value_left_control_2(data);
+		data->temp_map[y][x] = '.';
+		d += map_value_left_control_2(data);
 		return (d);
 	}
 	return (d);
@@ -111,12 +147,12 @@ int map_value_left_control_2(t_data *data)
 	i = 0;
 	j = 0;
 
-	while(data->path_map[i])
+	while(data->temp_map[i])
 	{
-		while(data->path_map[i][j] != '\0')
+		while(data->temp_map[i][j] != '\0')
 		{
-			if(data->path_map[i][j] == 'E' || data->path_map[i][j] == 'C'
-			   || data->path_map[i][j] == 'P')
+			if(data->temp_map[i][j] == 'E' || data->temp_map[i][j] == 'C'
+			   || data->temp_map[i][j] == 'P')
 				return (0);
 			j++;
 		}
@@ -124,31 +160,6 @@ int map_value_left_control_2(t_data *data)
 		i++;
 	}
 	return (1);
-}
-
-void find_player_x_y(t_data *data)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	data->path_map = data->map;
-	while(data->path_map[i])
-	{
-		while(data->path_map[i][j] != '\0')
-		{
-			if(data->path_map[i][j] == 'P')
-			{
-				data->x_player = j;
-				data->y_player = i;
-				return;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
 }
 
 int map_ber_control(t_data *data)
@@ -228,7 +239,7 @@ int	map_firstandlast_wall_control(t_data *data)
 	return (1);
 }
 
-int	map_value_control(t_data *data, t_value *value)
+int	map_value_control(t_data *data)
 {
 	int i;
 	int j;
@@ -236,14 +247,14 @@ int	map_value_control(t_data *data, t_value *value)
 
 	i = 0;
 	j = 0;
-	while(value->value[value->b] != '\0')
+	while(data->value.value[data->value.b] != '\0')
 	{
 		while(data->map[i])
 		{
 			while(data->map[i][j] != '\0' && data->map[i][j] != '\n')
 			{
-				if(data->map[i][j] == value->value[value->b])
-					d = check_value(data->map[i][j], value);
+				if(data->map[i][j] == data->value.value[data->value.b])
+					d = check_value(data->map[i][j], data);
 				j++;
 			}
 			j = 0;
@@ -251,20 +262,20 @@ int	map_value_control(t_data *data, t_value *value)
 		}
 		j = 0;
 		i = 0;
-		value->b++;
+		data->value.b++;
 	}
 	return (d);
 }
 
-int	check_value(char c, t_value *value)
+int	check_value(char c, t_data *data)
 {
 	if (c == 'E')
-		value->e_count++;
+		data->value.e_count++;
 	else if (c == 'P')
-		value->p_count++;
+		data->value.p_count++;
 	else if (c == 'C')
-		value->c_count++;
-	if (value->e_count != 1 || value->p_count != 1 || value->c_count < 1)
+		data->value.c_count++;
+	if (data->value.e_count != 1 || data->value.p_count != 1 || data->value.c_count < 1)
 		return (0);
 	return (1);
 }

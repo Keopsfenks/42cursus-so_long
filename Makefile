@@ -1,4 +1,4 @@
-SRCS = ./srcs/mandatory_part/main.c ./srcs/mandatory_part/utils.c ./srcs/mandatory_part/map_function.c
+SRCS = ./srcs/mandatory_part/main.c ./srcs/mandatory_part/utils.c ./srcs/mandatory_part/map_function.c ./srcs/mandatory_part/map_render_function.c
 SRCBS =
 
 NAME = so_long
@@ -12,7 +12,7 @@ FT_LIBFT = ./srcs/libary/ft_libft/libft.a
 RM = rm -rf
 LIBC = ar -rcs
 
-all: $(MLX) ${NAME}
+all: $(MLX) $(NAME)
 
 $(NAME): $(SRCS) $(MLX) $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE)
 	@gcc $(CFLAGS) $(LFLAGS) $(SRCS) $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE) -o $(NAME)
