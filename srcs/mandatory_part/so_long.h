@@ -11,10 +11,10 @@
 # include "../libary/mlx/mlx.h"
 
 //XPM FORMAT
-#define WALL "/Users/segurbuz/Desktop/so_long/srcs/textures/wall.xpm"
-#define COLLECTIBLE "/Users/segurbuz/Desktop/so_long/srcs/textures/goldenapple.xpm"
-#define PLAYER "/Users/segurbuz/Desktop/so_long/srcs/textures/hero.xpm"
-#define FLOOR "/Users/segurbuz/Desktop/so_long/srcs/textures/ground.xpm"
+#define WALL "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/wall.xpm"
+#define COLLECTIBLE "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/goldenapple.xpm"
+#define PLAYER "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/hero.xpm"
+#define FLOOR "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/ground.xpm"
 
 typedef struct s_data
 {

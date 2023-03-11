@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	{
 		data = ft_calloc(sizeof (t_data), 1);
 		data->mlx = mlx_init();
-		map(data, ft_strjoin("/Users/segurbuz/Desktop/so_long/srcs/maps/", av[1]));
+		map(data, ft_strjoin("/Users/segurbuz/Desktop/42cursus-so_long/srcs/maps/", av[1]));
 		check_map(data);
 
 		data->window = mlx_new_window(data->mlx, data->x_map * 64, data->y_map * 64, "so_long");
