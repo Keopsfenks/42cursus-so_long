@@ -1,6 +1,9 @@
-SRCS = ./srcs/mandatory_part/main.c ./srcs/mandatory_part/utils.c ./srcs/mandatory_part/map_function.c ./srcs/mandatory_part/map_render_function.c
+SRCS = ./srcs/mandatory_part/main.c \
+		./srcs/mandatory_part/utils.c  \
+		./srcs/mandatory_part/map_function.c \
+		./srcs/mandatory_part/map_render_function.c \
+		./srcs/mandatory_part/key_event_function.c
 SRCBS =
-
 NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
