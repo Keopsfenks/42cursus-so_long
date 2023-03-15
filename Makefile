@@ -5,13 +5,7 @@ SRCS = ./srcs/mandatory_part/main.c \
 		./srcs/mandatory_part/map_function_3.c \
 		./srcs/mandatory_part/map_render_function.c \
 		./srcs/mandatory_part/key_event_function.c
-SRCBS = ./srcs/bonus_part/main.c \
-		 ./srcs/bonus_part/key_event_function.c \
-		 ./srcs/bonus_part/map_function.c \
-		 ./srcs/bonus_part/map_function_2.c \
-		 ./srcs/bonus_part/map_function_3.c \
-		 ./srcs/bonus_part/map_render_function.c \
-		 ./srcs/bonus_part/utils.c
+SRCBS = ./srcs/bonus_part/main_bonus.c
 NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
