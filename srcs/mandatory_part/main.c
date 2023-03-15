@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		data->mlx = mlx_init();
 		map(data, ft_strjoin(MAP_EXTENSION, av[1]));
 		map_render(data);
-		mlx_hook(data->window, 2, 1L << 0, key_hook_event, data);
+		mlx_hook(data->win, 2, 1L << 0, key_hook_event, data);
 		mlx_loop(data->mlx);
 	}
 	error_print("ARGUMENT ERROR");
