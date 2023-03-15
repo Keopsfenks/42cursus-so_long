@@ -3,3 +3,6 @@
 .idea/42cursus-so_long.iml
 .idea/modules.xml
 .idea/workspace.xml
+*.o
+*.a
+so_long
