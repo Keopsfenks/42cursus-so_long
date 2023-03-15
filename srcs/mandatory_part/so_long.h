@@ -61,8 +61,7 @@ typedef struct s_maprender
 	int		y_player;
 	int		x_exit;
 	int		y_exit;
-	int		keycode;
-}		t_maprender;
+}			t_maprender;
 
 typedef struct s_data
 {
@@ -75,7 +74,7 @@ typedef struct s_data
 	t_maprender	mapr;
 	int			x_map;
 	int			y_map;
-}			t_data;
+}				t_data;
 
 size_t	ft_strlen_nl(char *str);
 void	error_print(char *str);
