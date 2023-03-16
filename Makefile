@@ -5,9 +5,16 @@ SRCS = ./srcs/mandatory_part/main.c \
 		./srcs/mandatory_part/map_function_3.c \
 		./srcs/mandatory_part/map_render_function.c \
 		./srcs/mandatory_part/key_event_function.c
-SRCBS = ./srcs/bonus_part/main_bonus.c
+SRCBS = ./srcs/bonus_part/main.c \
+		./srcs/bonus_part/utils.c  \
+		./srcs/bonus_part/map_function.c \
+		./srcs/bonus_part/map_function_2.c \
+		./srcs/bonus_part/map_function_3.c \
+		./srcs/bonus_part/map_render_function.c \
+		./srcs/bonus_part/key_event_function.c
 NAME = so_long
 CC = gcc
+norminette = ./srcs/mandatory_part ./srcs/bonus_part
 CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -framework AppKit -framework OpenGL -L./srcs/libary/mlx -lmlx
 MLX = ./srcs/libary/mlx/libmlx.a
@@ -26,6 +33,11 @@ $(NAME): $(SRCS) $(MLX) $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE)
 bonus : $(SRCBS) $(MLX) $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE)
 	@gcc $(CFLAGS) $(LFLAGS) $(SRCBS) $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE) -o $(NAME)
 	@echo "leblebi"
+
+test : ./srcs/bonus_part/bonus_function_test.c $(MLX) $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE)
+	@gcc $(CFLAGS) $(LFLAGS) ./srcs/bonus_part/bonus_function_test.c $(FT_PRINTF) $(FT_LIBFT) $(GET_NEXT_LINE) -o $(NAME)
+	@echo "leblebi"
+
 
 $(MLX) :
 	@make -C ./srcs/libary/mlx

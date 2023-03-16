@@ -14,7 +14,7 @@
 # define TEXTURES_BONUS_H
 
 # define WALL "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/b/wall.xpm"
-# define EXITXPM "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/b/exit.xpm"
+# define EXIT "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/b/exit.xpm"
 # define FLOOR "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/b/ground.xpm"
 
 # define HEROXPM1 "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/b/base/base1.xpm"

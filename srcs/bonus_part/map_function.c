@@ -46,7 +46,7 @@ void	check_map(t_data *data)
 		error_print("MAP ERROR = WALL");
 	find_player_x_y(data);
 	x = data->pl.x_player;
-	y = data->mapr.y_player;
+	y = data->pl.y_player;
 	find_exit_x_y(data);
 	map_value_left_control(data, x, y);
 	map_value_left_control_2(data);

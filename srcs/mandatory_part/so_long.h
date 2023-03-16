@@ -15,11 +15,11 @@
 
 # include <fcntl.h>
 # include "stdlib.h"
-# include "../../../test/srcs/libary/ft_printf/ft_printf.h"
-# include "../../../test/srcs/libary/get_next_line/get_next_line.h"
-# include "../../../test/srcs/libary/ft_printf/ft_printf.h"
-# include "../../../test/srcs/libary/ft_libft/libft.h"
-# include "../../../test/srcs/libary/mlx/mlx.h"
+# include "../libary/ft_printf/ft_printf.h"
+# include "../libary/get_next_line/get_next_line.h"
+# include "../libary/ft_printf/ft_printf.h"
+# include "../libary/ft_libft/libft.h"
+# include "../libary/mlx/mlx.h"
 
 //MAP EXTENSION
 # define MAP_EXTENSION "/Users/segurbuz/Desktop/42cursus-so_long/srcs/maps/"
