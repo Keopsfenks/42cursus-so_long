@@ -25,7 +25,7 @@ int	map_unknown_value_control(t_data *data)
 		{
 			if (data->map[i][j - 1] != '1' && data->map[i][j - 1] != '0' \
 				&& data->map[i][j - 1] != 'E' && data->map[i][j - 1] != 'C' \
-				&& data->map[i][j - 1] != 'P')
+				&& data->map[i][j - 1] != 'P' && data->map[i][j - 1] != 'M')
 				return (0);
 			j++;
 		}

@@ -47,9 +47,9 @@ typedef struct s_value
 
 typedef struct s_enemy
 {
-	int		*x;
-	int		*y;
-	int		*check_wall;
+	int		x_enemy;
+	int		y_enemy;
+	int		check_wall;
 	void	**img;
 	void	**r_img;
 	int		*fr;
@@ -57,8 +57,6 @@ typedef struct s_enemy
 
 typedef struct s_material
 {
-	int			*x;
-	int			*y;
 	void		**img;
 }				t_collect;
 
@@ -103,6 +101,8 @@ typedef struct s_data
 size_t	ft_strlen_nl(char *str);
 void	error_print(char *str);
 void	map_size(t_data *data, char *path);
+void	enemy_move_to_left(t_data *data);
+int		enemy_move_function(t_data *data);
 void	map_create(t_data *data, char *path);
 int		map_size_control(t_data *data);
 void	check_map(t_data *data);

@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 		map(data, ft_strjoin(MAP_EXTENSION, av[1]));
 		map_render(data);
 		mlx_hook(data->win, 2, 1L << 0, key_hook_event, data);
+		data->enemy.check_wall = 0;
 		mlx_loop_hook(data->mlx, add_image_select_x_y, data);
 		mlx_loop(data->mlx);
 	}

@@ -11,7 +11,8 @@ SRCBS = ./srcs/bonus_part/main.c \
 		./srcs/bonus_part/map_function_2.c \
 		./srcs/bonus_part/map_function_3.c \
 		./srcs/bonus_part/map_render_function.c \
-		./srcs/bonus_part/key_event_function.c
+		./srcs/bonus_part/key_event_function.c \
+		./srcs/bonus_part/enemy_function.c
 NAME = so_long
 CC = gcc
 norminette = ./srcs/mandatory_part ./srcs/bonus_part

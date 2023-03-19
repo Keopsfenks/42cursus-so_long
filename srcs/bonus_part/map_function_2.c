@@ -113,6 +113,11 @@ void	find_player_x_y(t_data *data)
 				data->pl.x_player = j;
 				data->pl.y_player = i;
 			}
+			if (data->temp_map[i][j] == 'M')
+			{
+				data->enemy.x_enemy = j;
+				data->enemy.y_enemy = i;
+			}
 			j++;
 		}
 		j = 0;
