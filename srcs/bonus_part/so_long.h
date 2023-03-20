@@ -21,10 +21,7 @@
 # include "../libary/ft_libft/libft.h"
 # include "../libary/mlx/mlx.h"
 
-//MAP EXTENSION
-# define MAP_EXTENSION "/Users/segurbuz/Desktop/42cursus-so_long/srcs/maps/"
-
-# define WHITE 0xffff99
+# define YELLOW 0xffff99
 
 //KEY CODE
 # define W_KEY 13

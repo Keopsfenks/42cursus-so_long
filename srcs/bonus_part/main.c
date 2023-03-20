@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	{
 		data->mlx = mlx_init();
 		data->map_arg = av[1];
-		map(data, ft_strjoin(MAP_EXTENSION, data->map_arg));
+		map(data, data->map_arg);
 		map_render(data);
 		mlx_hook(data->win, 2, 1L << 0, key_hook_event, data);
 		mlx_loop_hook(data->mlx, enemy_move_function, data);

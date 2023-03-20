@@ -29,8 +29,8 @@ void	step_add_to_screen(t_data *data)
 	char	*step;
 
 	step = ft_itoa(data->mapr.step);
-	mlx_string_put(data->mlx, data->win, 5, 20, WHITE, "step: ");
-	mlx_string_put(data->mlx, data->win, 45, 20, WHITE, step);
+	mlx_string_put(data->mlx, data->win, 5, 20, YELLOW, "step: ");
+	mlx_string_put(data->mlx, data->win, 45, 20, YELLOW, step);
 	free(step);
 }
 

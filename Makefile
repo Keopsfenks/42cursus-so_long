@@ -52,6 +52,9 @@ $(FT_LIBFT) :
 	@make -C ./srcs/libary/ft_libft
 
 clean:
+	@make clean -C ./srcs/libary/mlx
+	@make fclean -C ./srcs/libary/ft_printf
+	@make fclean -C ./srcs/libary/ft_libft
 
 fclean: clean
 	@rm -rf $(NAME)
