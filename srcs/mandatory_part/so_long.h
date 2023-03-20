@@ -14,22 +14,19 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
-# include "stdlib.h"
+# include <stdlib.h>
 # include "../libary/ft_printf/ft_printf.h"
 # include "../libary/get_next_line/get_next_line.h"
 # include "../libary/ft_printf/ft_printf.h"
 # include "../libary/ft_libft/libft.h"
 # include "../libary/mlx/mlx.h"
 
-//MAP EXTENSION
-# define MAP_EXTENSION "/Users/segurbuz/Desktop/42cursus-so_long/srcs/maps/"
-
 //XPM FORMAT
-# define WALL "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/m/1.xpm"
-# define COLLEC "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/m/c.xpm"
-# define PLAYER "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/m/p.xpm"
-# define FLOOR "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/m/0.xpm"
-# define EXIT "/Users/segurbuz/Desktop/42cursus-so_long/srcs/textures/m/e.xpm"
+# define WALL "srcs/textures/m/1.xpm"
+# define COLLEC "srcs/textures/m/c.xpm"
+# define PLAYER "srcs/textures/m/p.xpm"
+# define FLOOR "srcs/textures/m/0.xpm"
+# define EXIT "srcs/textures/m/e.xpm"
 
 //KEY CODE
 # define W_KEY 13
