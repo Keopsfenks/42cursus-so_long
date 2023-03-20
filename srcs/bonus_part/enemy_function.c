@@ -12,36 +12,44 @@
 
 #include "so_long.h"
 
-void	enemy_move_to_left(t_data *data)
+void	enemy_move(t_data *data, int check)
 {
-	data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] = '0';
-	data->map[data->enemy.y_enemy][data->enemy.x_enemy] = 'M';
-	printf("%s\n", data->map[data->enemy.y_enemy]);
+	if (check == 0)
+	{
+		data->enemy.x_enemy -= 1;
+		data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] = '0';
+		data->map[data->enemy.y_enemy][data->enemy.x_enemy] = 'M';
+	}
+	else
+	{
+		data->enemy.x_enemy += 1;
+		data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] = '0';
+		data->map[data->enemy.y_enemy][data->enemy.x_enemy] = 'M';
+	}
 }
 
-void enemy_move_to_right(t_data *data)
+void	check_enemy_move(t_data *data)
 {
-	data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] = '0';
-	data->map[data->enemy.y_enemy][data->enemy.x_enemy] = 'M';
-	printf("%s\n", data->map[data->enemy.y_enemy]);
+	if (data->enemy.x_enemy == data->pl.x_player
+		&& data->enemy.y_enemy == data->pl.y_player)
+		error_print("CAUGHT BY THE ENEMY");
+	if (data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] == '1'
+			|| data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] == 'C'
+			|| data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] == 'E'
+			|| data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] == 'M')
+		data->enemy.check_wall = 1;
+	if (data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] == '1'
+			|| data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] == 'C'
+			|| data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] == 'E'
+			|| data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] == 'M')
+		data->enemy.check_wall = 0;
 }
 
 int	enemy_move_function(t_data *data)
 {
-	usleep(70000);
-	if ((data->map[data->enemy.y_enemy][data->enemy.x_enemy - 1] != '1' && data->enemy.check_wall == 0))
-	{
-		data->enemy.x_enemy -= 1;
-		enemy_move_to_left(data);
-		return (0);
-	}
-	data->enemy.check_wall = 1;
-	if((data->map[data->enemy.y_enemy][data->enemy.x_enemy + 1] != '1' && data->enemy.check_wall == 1))
-	{
-		data->enemy.x_enemy += 1;
-		enemy_move_to_right(data);
-		return (0);
-	}
-	data->enemy.check_wall = 0;
+	add_image_select_x_y(data);
+	usleep(10000);
+	check_enemy_move(data);
+	enemy_move(data, data->enemy.check_wall);
 	return (0);
 }

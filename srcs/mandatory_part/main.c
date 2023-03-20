@@ -28,8 +28,9 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		data = ft_calloc(sizeof (t_data), 1);
+		data->map_arg = av[1];
 		data->mlx = mlx_init();
-		map(data, ft_strjoin(MAP_EXTENSION, av[1]));
+		map(data, ft_strjoin(MAP_EXTENSION, data->map_arg));
 		map_render(data);
 		mlx_hook(data->win, 2, 1L << 0, key_hook_event, data);
 		mlx_loop(data->mlx);

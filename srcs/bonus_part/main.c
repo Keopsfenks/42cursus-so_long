@@ -25,15 +25,15 @@ int	main(int ac, char **av)
 {
 	t_data	*data;
 
+	data = ft_calloc(sizeof (t_data), 1);
 	if (ac == 2)
 	{
-		data = ft_calloc(sizeof (t_data), 1);
 		data->mlx = mlx_init();
-		map(data, ft_strjoin(MAP_EXTENSION, av[1]));
+		data->map_arg = av[1];
+		map(data, ft_strjoin(MAP_EXTENSION, data->map_arg));
 		map_render(data);
 		mlx_hook(data->win, 2, 1L << 0, key_hook_event, data);
-		data->enemy.check_wall = 0;
-		mlx_loop_hook(data->mlx, add_image_select_x_y, data);
+		mlx_loop_hook(data->mlx, enemy_move_function, data);
 		mlx_loop(data->mlx);
 	}
 	error_print("ARGUMENT ERROR");

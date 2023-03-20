@@ -107,7 +107,7 @@ int	key_hook_event(int keycode, t_data *data)
 		error_print("GAME CLOSED");
 	if (keycode == W_KEY \
 		&& data->map[y - 1][x] != '1')
-		 player_move_up(data);
+		player_move_up(data);
 	if (keycode == A_KEY \
 		&& data->map[y][x - 1] != '1')
 		player_move_left(data);

@@ -15,7 +15,6 @@
 
 # include <fcntl.h>
 # include "stdlib.h"
-#include "stdio.h"
 # include "../libary/ft_printf/ft_printf.h"
 # include "../libary/get_next_line/get_next_line.h"
 # include "../libary/ft_printf/ft_printf.h"
@@ -64,8 +63,8 @@ typedef struct s_player
 {
 	int			x_player;
 	int			y_player;
-	int 		x_check;
-	int 		y_check;
+	int			x_check;
+	int			y_check;
 	void		**b_img;
 	void		**j_img;
 	void		**w_img;
@@ -77,7 +76,7 @@ typedef struct s_player
 typedef struct s_maprender
 {
 	void	**img;
-	int 	step;
+	int		step;
 	int		x_exit;
 	int		y_exit;
 }			t_maprender;
@@ -86,12 +85,13 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	char		*map_arg;
 	char		**map;
 	char		**temp_map;
 	char		*map_extension;
 	t_value		value;
 	t_maprender	mapr;
-	t_player 	pl;
+	t_player	pl;
 	t_collect	coll;
 	t_enemy		enemy;
 	int			x_map;
@@ -100,10 +100,14 @@ typedef struct s_data
 
 size_t	ft_strlen_nl(char *str);
 void	error_print(char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 void	map_size(t_data *data, char *path);
-void	enemy_move_to_left(t_data *data);
+void	enemy_move(t_data *data, int check);
 int		enemy_move_function(t_data *data);
+void	enemy_animation(t_data *data, int x, int y);
+void	reenemy_animation(t_data *data, int x, int y);
 void	map_create(t_data *data, char *path);
+void	collectible_animation(t_data *data, int x, int y);
 int		map_size_control(t_data *data);
 void	check_map(t_data *data);
 int		map_value_control(t_data *data);
@@ -115,12 +119,16 @@ void	map_value_left_control(t_data *data, int x, int y);
 void	find_player_x_y(t_data *data);
 void	map_value_left_control_2(t_data *data);
 void	step_add_to_screen(t_data *data);
+void	reenemy_animation(t_data *data, int x, int y);
 void	temp_map_create(t_data *data, char *path);
 void	find_exit_x_y(t_data *data);
 void	xpm_convert_to_player_left(t_data *data, int x, int y);
 void	map_render(t_data *data);
+void	xpm_convert_to_enemy(t_data *data, int x, int y);
+void	xpm_convert_to_reenemy(t_data *data, int x, int y);
 void	xpm_convert_to_wall_and_floor(t_data *data, int x, int y);
 void	xpm_convert_to_player_b(t_data *data, int x, int y);
+void	xpm_convert_to_collectible(t_data *data, int x, int y);
 int		add_image_select_x_y(t_data *data);
 void	xpm_convert_to_player_right(t_data *data, int x, int y);
 void	add_image_to_window(t_data *data, char c, int x, int y);

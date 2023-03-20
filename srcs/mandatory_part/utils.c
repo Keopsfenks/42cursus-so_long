@@ -24,6 +24,20 @@ size_t	ft_strlen_nl(char *str)
 	return (i);
 }
 
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
+}
+
 void	map_exit_check(t_data *data)
 {
 	ft_printf("step: %d\n", data->mapr.step);

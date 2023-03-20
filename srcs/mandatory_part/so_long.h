@@ -56,7 +56,7 @@ typedef struct s_maprender
 	void	*pl;
 	void	*fl;
 	void	*ex;
-	int 	step;
+	int		step;
 	int		x_player;
 	int		y_player;
 	int		x_exit;
@@ -70,6 +70,7 @@ typedef struct s_data
 	char		**map;
 	char		**temp_map;
 	char		*map_extension;
+	char		*map_arg;
 	t_value		value;
 	t_maprender	mapr;
 	int			x_map;
@@ -87,6 +88,7 @@ int		check_value(char c, t_data *data);
 int		map_firstandlast_wall_control(t_data *data);
 int		map_unknown_value_control(t_data *data);
 int		map_ber_control(t_data *data);
+int		ft_strcmp(const char *s1, const char *s2);
 void	map_value_left_control(t_data *data, int x, int y);
 void	find_player_x_y(t_data *data);
 void	map_value_left_control_2(t_data *data);

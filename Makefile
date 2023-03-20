@@ -12,11 +12,14 @@ SRCBS = ./srcs/bonus_part/main.c \
 		./srcs/bonus_part/map_function_3.c \
 		./srcs/bonus_part/map_render_function.c \
 		./srcs/bonus_part/key_event_function.c \
-		./srcs/bonus_part/enemy_function.c
+		./srcs/bonus_part/enemy_function.c \
+		./srcs/bonus_part/xpm_convert_utils.c \
+		./srcs/bonus_part/xpm_convert_utils_2.c \
+		./srcs/bonus_part/map_render_function_2.c
 NAME = so_long
 CC = gcc
 norminette = ./srcs/mandatory_part ./srcs/bonus_part
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3
 LFLAGS = -framework AppKit -framework OpenGL -L./srcs/libary/mlx -lmlx
 MLX = ./srcs/libary/mlx/libmlx.a
 FT_PRINTF = ./srcs/libary/ft_printf/libftprintf.a

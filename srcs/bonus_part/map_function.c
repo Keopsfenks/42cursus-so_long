@@ -92,28 +92,17 @@ void	map_value_left_control_2(t_data *data)
 
 int	map_ber_control(t_data *data)
 {
-	char	*ber;
-	int		len;
-	int		i;
-	int		b;
-	int		d;
+	char	*str;
+	int		a;
 
-	ber = ".ber";
-	b = 0;
-	i = 41;
-	d = 0;
-	len = ft_strlen_nl(data->map_extension);
-	while (i < len)
-	{
-		if (data->map_extension[i] == ber[b])
-		{
-			d++;
-			b++;
-		}
-		i++;
-	}
-	if (d == 4)
-		return (1);
-	else
+	str = ft_strrchr(data->map_arg, '.');
+	if (str == NULL)
 		return (0);
+	else if ((ft_strcmp(str, ".ber") != 0) && ft_strlen(str) != 4)
+		return (0);
+	a = ft_strlen(data->map_arg);
+	if (data->map_arg[0] == '.' || (data->map_arg[a - 4] == '.' \
+		&& (data->map_arg[a - 5] == '.' || data->map_arg[a - 5] == '/')))
+		return (0);
+	return (1);
 }
