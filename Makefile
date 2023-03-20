@@ -18,7 +18,6 @@ SRCBS = ./srcs/bonus_part/main.c \
 		./srcs/bonus_part/map_render_function_2.c
 NAME = so_long
 CC = gcc
-norminette = ./srcs/mandatory_part ./srcs/bonus_part
 CFLAGS = -Wall -Wextra -Werror -O3
 LFLAGS = -framework AppKit -framework OpenGL -L./srcs/libary/mlx -lmlx
 MLX = ./srcs/libary/mlx/libmlx.a
